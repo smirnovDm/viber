@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Roles\Role;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -45,4 +46,41 @@ class User extends Authenticatable
      * @var string
      */
     protected $table = 'users';
+
+    public function setPasswordAttribute(string $password)
+    {
+        $this->attributes['password'] = Hash::make($password);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAdmin()
+    {
+        return $this->attributes['role_id'] === Role::ADMIN;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPM()
+    {
+        return $this->attributes['role_id'] === Role::PM;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isSV()
+    {
+        return $this->attributes['role_id'] === Role::SV;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isOperator()
+    {
+        return $this->attributes['role_id'] === Role::OPERATOR;
+    }
 }
