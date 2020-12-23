@@ -55,7 +55,7 @@ class User extends Authenticatable
     /**
      * @return bool
      */
-    public function isAdmin()
+    public function isAdmin(): bool
     {
         return $this->attributes['role_id'] === Role::ADMIN;
     }
@@ -63,23 +63,7 @@ class User extends Authenticatable
     /**
      * @return bool
      */
-    public function isPM()
-    {
-        return $this->attributes['role_id'] === Role::PM;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isSV()
-    {
-        return $this->attributes['role_id'] === Role::SV;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isOperator()
+    public function isOperator(): bool
     {
         return $this->attributes['role_id'] === Role::OPERATOR;
     }

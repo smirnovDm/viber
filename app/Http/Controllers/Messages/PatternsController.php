@@ -2,35 +2,78 @@
 
 namespace App\Http\Controllers\Messages;
 
+use App\Http\Requests\Pattern\Create;
 use App\Models\Messages\Pattern;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 
 class PatternsController extends Controller
 {
-//    /**
-//     * PatternsController constructor.
-//     */
-//    public function __construct()
-//    {
-//        $this->authorizeResource(Pattern::class, 'pattern');
-//    }
-
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function index()
     {
-        return view('patterns.index');
+        $this->authorize('viewAny', Pattern::class);
+
+        $patterns = Pattern::query()->paginate(15);
+
+        return view('patterns.index', compact('patterns'));
     }
 
     /**
      * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function create(Request $request)
     {
+        $this->authorize('create', Pattern::class);
+
         return view('patterns.create');
+    }
+
+    /**
+     * @param Create $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function store(Create $request)
+    {
+        $this->authorize('create', Pattern::class);
+
+        Pattern::create(array_merge($request->validated(), [
+            'user_id' => Auth::id()
+        ]));
+
+        return redirect(route('sms-patterns.index'));
+    }
+
+    /**
+     * @param Pattern $pattern
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function show(Pattern $pattern)
+    {
+        $this->authorize('view', Pattern::class);
+
+        return view('patterns.show', compact($pattern));
+    }
+
+    /**
+     * @param Pattern $pattern
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function edit(Pattern $pattern, Request $request)
+    {
+        $this->authorize('update', Pattern::class);
+
+        return view('patterns.edit', compact($pattern));
     }
 }

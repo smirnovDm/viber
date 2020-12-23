@@ -29,7 +29,7 @@ class PatternPolicy
      */
     public function view(User $user)
     {
-
+        return $user->isAdmin();
     }
 
     /**
@@ -40,7 +40,7 @@ class PatternPolicy
      */
     public function create(User $user)
     {
-        $user->isAdmin();
+        return $user->isAdmin();
     }
 
     /**
@@ -52,7 +52,7 @@ class PatternPolicy
      */
     public function update(User $user, Pattern $pattern)
     {
-        //
+        return $user->isAdmin();
     }
 
     /**

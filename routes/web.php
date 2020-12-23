@@ -15,15 +15,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', \App\Http\Controllers\WelcomeController::class)->name('root');
 
-//Route::get('/dashboard', function () {
-//    return view('dashboard');
-//})->middleware(['auth'])->name('dashboard');
 
 Route::middleware(['auth'])->group(function(){
 
     Route::get('/dashboard', \App\Http\Controllers\WelcomeController::class)->name('dashboard');
 
     Route::resource('/sms-patterns', \App\Http\Controllers\Messages\PatternsController::class);
+
 });
 
 

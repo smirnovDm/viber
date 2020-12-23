@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="viber@localhost" uuid="0846a23c-b99a-4d00-9eaf-a8dc74742943">
-      <driver-ref>mysql.8</driver-ref>
+    <data-source source="LOCAL" name="viber@localhost [2]" uuid="3d828e6c-b029-482f-a037-4b924c5eecf8">
+      <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/viber</jdbc-url>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/viber</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
 </project>

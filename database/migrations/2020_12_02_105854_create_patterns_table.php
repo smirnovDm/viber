@@ -16,9 +16,9 @@ class CreatePatternsTable extends Migration
         Schema::create('patterns', function (Blueprint $table) {
             $table->id();
             $table->string('theme');
-            $table->text('text');
+            $table->text('sms_text');
+            $table->text('viber_text');
             $table->string('tag');
-            $table->string('type');
             $table->unsignedBigInteger('user_id')->nullable()->default(null);
             $table->timestamps();
 

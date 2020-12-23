@@ -1,21 +1,24 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
-    purge: ['./storage/framework/views/*.php', './resources/views/**/*.blade.php'],
-
+    purge: [
+        './storage/framework/views/*.php',
+        './resources/**/*.blade.php',
+        './resources/**/*.js',
+        './resources/**/*.vue',
+    ],
     theme: {
-        extend: {
-            fontFamily: {
-                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
-            },
-        },
+        extend: {},
     },
-
     variants: {
         extend: {
             opacity: ['disabled'],
         },
     },
 
-    plugins: [require('@tailwindcss/forms')],
+    plugins: [
+        // require('@tailwindcss/forms'),
+        // require('@tailwindcss/typography'),
+        // require('@tailwindcss/aspect-ratio'),
+    ],
 };

@@ -25,8 +25,6 @@ class Role extends Model
      */
     protected $rows = [
         ['id' => self::ADMIN,    'name' => 'админ'],
-        ['id' => self::PM,       'name' => 'пм'],
-        ['id' => self::SV,       'name' => 'супервайзер'],
         ['id' => self::OPERATOR, 'name' => 'оператор'],
     ];
 }
