@@ -18,6 +18,7 @@ class CreatePatternsTable extends Migration
             $table->string('theme');
             $table->text('sms_text');
             $table->text('viber_text');
+            $table->boolean('is_active')->default(true);
             $table->string('tag');
             $table->unsignedBigInteger('user_id')->nullable()->default(null);
             $table->timestamps();

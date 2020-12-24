@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Messages\Pattern;
 use App\Models\Roles\Role;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -66,5 +67,13 @@ class User extends Authenticatable
     public function isOperator(): bool
     {
         return $this->attributes['role_id'] === Role::OPERATOR;
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function patterns()
+    {
+        return $this->hasMany(Pattern::class);
     }
 }

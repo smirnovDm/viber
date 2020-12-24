@@ -15,7 +15,7 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('sms-patterns.index')" :active="request()->routeIs('sms-patterns.index')">
+                    <x-nav-link :href="route('patterns.index')" :active="request()->routeIs('patterns.index')">
                         {{ __('Шаблоны') }}
                     </x-nav-link>
                 </div>

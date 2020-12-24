@@ -13,3 +13,14 @@
 .btn-save{
     @apply border-2 border-gray-400 bg-green-500 text-gray-900 px-4 py-2 rounded-lg hover:bg-green-400 font-sans antialiased
 }
+
+.toggle__dot {
+    top: -.25rem;
+    left: -.25rem;
+    transition: all 0.3s ease-in-out;
+}
+
+input:checked ~ .toggle__dot {
+    transform: translateX(100%);
+    background-color: #48bb78;
+}

@@ -20,7 +20,7 @@ Route::middleware(['auth'])->group(function(){
 
     Route::get('/dashboard', \App\Http\Controllers\WelcomeController::class)->name('dashboard');
 
-    Route::resource('/sms-patterns', \App\Http\Controllers\Messages\PatternsController::class);
+    Route::resource('/patterns', \App\Http\Controllers\Messages\PatternsController::class);
 
 });
 
