@@ -18,6 +18,7 @@ class Update extends FormRequest
             'tag'        => ['required', 'string', 'min:1'],
             'viber_text' => ['required', 'string', 'min:3'],
             'sms_text'   => ['required', 'string', 'min:3'],
+            'is_active'  => ['required'],
         ];
     }
 }

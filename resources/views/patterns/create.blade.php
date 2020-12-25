@@ -27,7 +27,7 @@
                                 <label class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>Текст(для SMS):</label>
                                 <textarea class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none" name="sms_text" rows="7"></textarea>
                             </div>
-
+{{--    toggle switcher     --}}
                             <div class="flex items-center ml-3">
                                 <label
                                     for="toogleA"
@@ -39,7 +39,8 @@
                                         Статус:
                                     </div>
                                     <div class="relative">
-                                        <input id="toogleA" name="is_active" type="checkbox" checked class="hidden" />
+                                        <input type="hidden" name="is_active" value="0">
+                                        <input id="toogleA" name="is_active" type="checkbox" class="hidden" />
                                         <div
                                             class="toggle__line w-10 h-4 bg-gray-400 rounded-full shadow-inner"
                                         ></div>
@@ -49,7 +50,7 @@
                                     </div>
                                 </label>
                             </div>
-
+{{--   toggle switcher ends    --}}
                         </div>
                         <div class="flex justify-end">
                             <span class="pr-4">

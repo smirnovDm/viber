@@ -21,13 +21,38 @@
 
                             <div class='w-full md:w-full px-3 mb-6'>
                                 <label class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>Текст(для Viber):</label>
-                                <textarea class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none" name="viber_text" rows="4">{{$pattern->viber_text}}</textarea>
+                                <textarea class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none" name="viber_text" rows="7">{{$pattern->viber_text}}</textarea>
                             </div>
 
                             <div class='w-full md:w-full px-3 mb-6'>
                                 <label class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>Текст(для SMS):</label>
-                                <textarea class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none" name="sms_text" rows="4">{{$pattern->sms_text}}</textarea>
+                                <textarea class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none" name="sms_text" rows="7">{{$pattern->sms_text}}</textarea>
                             </div>
+ {{--    toggle switcher     --}}
+                            <div class="flex items-center ml-3">
+                                <label
+                                    for="toogleA"
+                                    class="flex items-center cursor-pointer"
+                                >
+                                    <div
+                                        class="mr-3 text-gray-700 font-medium"
+                                    >
+                                        Статус:
+                                    </div>
+
+                                    <div class="relative">
+                                        <input type="hidden" name="is_active" value="0"/>
+                                        <input id="toogleA" name="is_active" type="checkbox"  class="hidden" value="1" {{$pattern->is_active || old('is_active', 0) === 1 ? 'checked' : ''}} />
+                                        <div
+                                            class="toggle__line w-10 h-4 bg-gray-400 rounded-full shadow-inner"
+                                        ></div>
+                                        <div
+                                            class="toggle__dot absolute w-6 h-6 bg-white rounded-full shadow inset-y-0 left-0"
+                                        ></div>
+                                    </div>
+                                </label>
+                            </div>
+ {{--   toggle switcher ends    --}}
                         </div>
                         <div class="flex justify-end">
                             <span class="pr-4">

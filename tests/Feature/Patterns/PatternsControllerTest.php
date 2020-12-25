@@ -179,6 +179,7 @@ class PatternsControllerTest extends TestCase
             'tag'        => 'dskjfhgjsdhfgkjsdhf',
             'viber_text' => 'sdlfkjsoifjgsdfgdsfgds',
             'sms_text'   => 'sdfoidsfgiodssdfsdf',
+            'is_active'  => true
         ];
 
         $response = $this->actingAs($user)
@@ -189,6 +190,7 @@ class PatternsControllerTest extends TestCase
             'tag'        => 'dskjfhgjsdhfgkjsdhf',
             'viber_text' => 'sdlfkjsoifjgsdfgdsfgds',
             'sms_text'   => 'sdfoidsfgiodssdfsdf',
+            'is_active'  => true,
             'user_id'    => $user->id,
         ]);
 
@@ -209,6 +211,7 @@ class PatternsControllerTest extends TestCase
             'tag'        => 'dskjfhgjsdhfgkjsdhf',
             'viber_text' => 'sdlfkjsoifjgsdfgdsfgds',
             'sms_text'   => 'sdfoidsfgiodssdfsdf',
+            'is_active'  => true,
         ];
 
         $this->actingAs($user)
@@ -269,6 +272,7 @@ class PatternsControllerTest extends TestCase
             'sms_text'   => 'My text for sms message AND I CHANGE IT',
             'viber_text' => 'My text for viber message AND I CHANGE IT',
             'tag'        => 'My custom tag',
+            'is_active'  => false,
         ];
 
         $response = $this->actingAs($user)
@@ -277,6 +281,7 @@ class PatternsControllerTest extends TestCase
         $this->assertDatabaseHas('patterns', [
             'sms_text'   => 'My text for sms message AND I CHANGE IT',
             'viber_text' => 'My text for viber message AND I CHANGE IT',
+            'is_active'  => false,
         ]);
 
         $response->assertStatus(302);
